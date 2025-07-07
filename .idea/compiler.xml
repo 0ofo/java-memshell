@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-shell-demo" />
         <module name="servlet-api" />
+        <module name="agent-inject" />
       </profile>
     </annotationProcessing>
   </component>

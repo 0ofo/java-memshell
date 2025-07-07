@@ -11,6 +11,8 @@
 
     <modules>
         <module>servlet-api</module>
+        <module>spring-shell-demo</module>
+        <module>agent-inject</module>
     </modules>
 
 
