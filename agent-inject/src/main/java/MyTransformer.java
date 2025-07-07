@@ -42,7 +42,7 @@ public class MyTransformer implements ClassFileTransformer {
                 throw new RuntimeException(e);
             }
         }
-        return null;
+        return ClassFileTransformer.super.transform(loader, className, classBeingRedefined, protectionDomain, classfileBuffer);
 
     }
 }

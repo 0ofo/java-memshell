@@ -56,11 +56,11 @@
 * [Listener命令回显](https://www.bilibili.com/video/BV14Rw5eJEDx)
 * [Spring Controller内存马](https://www.bilibili.com/video/BV1dF9gYwE1y)
 * [Spring Interceptor内存马](https://www.bilibili.com/video/BV1W59BYxEfu)
-* [Agent内存马]()
-* [JNDI方式注入内存马]()
-* [Fastjson实战]()
-* [反序列化注入内存马]()
-* [Shiro注入内存马实战]()
+* [Agent内存马](https://www.bilibili.com/video/BV1E5ZsYXEgt)
+* [JNDI方式注入内存马](https://www.bilibili.com/video/BV1VTMpzxE4k)
+* [Fastjson实战](https://www.bilibili.com/video/BV18vMczoEgA)
+* [反序列化注入内存马](https://www.bilibili.com/video/BV1hKMuzUErz)
+* [Shiro注入内存马实战](https://www.bilibili.com/video/BV1UrNtzdEFM)
 
 ## 如何使用本项目
 ```bash

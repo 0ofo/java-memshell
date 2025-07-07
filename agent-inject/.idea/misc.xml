@@ -8,58 +8,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
-  </component>
-  <component name="ProjectUserFactors">
-    <factor id="completionFinishedType">
-      <dailyData date="22-01-2025">
-        <observation name="cancelled" value="4.0" />
-        <observation name="explicitSelect" value="1.0" />
-      </dailyData>
-    </factor>
-    <factor id="completionType">
-      <dailyData date="22-01-2025">
-        <observation name="BASIC" value="3.0" />
-      </dailyData>
-    </factor>
-    <factor id="completionUsage">
-      <dailyData date="22-01-2025">
-        <observation name="count" value="5.0" />
-      </dailyData>
-    </factor>
-    <factor id="fullLineFactors" />
-    <factor id="itemPosition">
-      <dailyData date="22-01-2025">
-        <observation name="0" value="1.0" />
-      </dailyData>
-    </factor>
-    <factor id="mnemonicsUsage">
-      <dailyData date="22-01-2025">
-        <observation name="total" value="1.0" />
-        <observation name="withMnemonics" value="0.0" />
-      </dailyData>
-    </factor>
-    <factor id="prefixLength">
-      <dailyData date="22-01-2025">
-        <observation name="15" value="1.0" />
-      </dailyData>
-    </factor>
-    <factor id="prefixMatchingType">
-      <dailyData date="22-01-2025">
-        <observation name="GREEDY_WITH_CASE" value="1.0" />
-      </dailyData>
-    </factor>
-    <factor id="templatesUsage">
-      <dailyData date="22-01-2025">
-        <observation name="totalStartingWithPrefix" value="1.0" />
-      </dailyData>
-    </factor>
-    <factor id="timeBetweenTyping">
-      <dailyData date="22-01-2025">
-        <observation name="average" value="166.6" />
-        <observation name="count" value="5.0" />
-      </dailyData>
-    </factor>
   </component>
 </project>

@@ -10,7 +10,6 @@
         <module name="agent-inject" />
         <module name="spring-shell" />
         <module name="jndi-demo" />
-        <module name="unser-shell" />
         <module name="servlet-api" />
       </profile>
     </annotationProcessing>
