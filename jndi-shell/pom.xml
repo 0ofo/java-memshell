@@ -12,6 +12,7 @@
     <modules>
         <module>jndi-demo</module>
         <module>jndi-inject</module>
+        <module>fastjson-bypass</module>
     </modules>
 
 

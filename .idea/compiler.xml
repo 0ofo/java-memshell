@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-shell" />
         <module name="jndi-inject" />
         <module name="agent-inject" />
-        <module name="spring-shell" />
         <module name="jndi-demo" />
         <module name="servlet-api" />
+        <module name="fastjson-bypass" />
+        <module name="unser-demo" />
       </profile>
     </annotationProcessing>
   </component>
