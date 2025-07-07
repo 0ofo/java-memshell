@@ -4,17 +4,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
-    <artifactId>java-memshell</artifactId>
+    <artifactId>jndi-shell</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
     <modules>
-        <module>servlet-api</module>
-        <module>spring-shell</module>
-        <module>agent-inject</module>
-        <module>jndi-shell</module>
-        <module>unser-shell</module>
+        <module>jndi-demo</module>
+        <module>jndi-inject</module>
     </modules>
 
 

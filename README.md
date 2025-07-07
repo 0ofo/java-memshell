@@ -26,12 +26,45 @@
 
 ## 本项目介绍
 
+本项目包含常见Java内存马
+
+### 环境准备
+
+您需要电脑上存在jdk8环境，tomcat8中间件，还有较新的idea。
+
+在jndi注入方式中，将用到marshallsec.jar，可以前往本人另一个仓库获取。
+
+其中在反序列化注入一节中，还将用到yakit渗透测试工具。
+
+在fastjson和shiro实战中，将使用vulhub中的docker-compose靶场，请自行下载
+
 ### 目录结构
 
-| 项目名称                                 |介绍|
-|--------------------------------------| ------|
-| [servlet-api](servlet-api/README.md) |包含Servlet/Filter/Listener/Valve内存马，使用jsp注入方式|
-| spring-shell-demo                    |包含Spring Controller/Interceptor内存马，使用内嵌代码注入|
-| agent-inject                         |包含agent内存马，使用agentmain运行时动态注入|
-| jndi                                 ||
+| 项目名称                                   | 介绍                                           |
+|----------------------------------------|----------------------------------------------|
+| [servlet-api](servlet-api/README.md)   | 包含Servlet/Filter/Listener/Valve内存马，使用jsp注入方式 |
+| [spring-shell](spring-shell/README.md) | 包含Spring Controller/Interceptor内存马，使用内嵌代码注入  |
+| [agent-inject](agent-inject/README.md) | 包含agent内存马，使用agentmain运行时动态注入                |
+| [jndi-shell](jndi-shell/README.md)     | 使用无文件jndi方式注入内存马，含jndi-demo和fastjson实战       |
+| [unser-shell](unser-shell/README.md)   | 使用无文件反序列化方式注入内存马，含shiro实战                    |
 
+### 源码级详细分析配套课程介绍
+
+* [Servlet内存马](https://www.bilibili.com/video/BV1FKUMYQE8D)
+* [Filter内存马](https://www.bilibili.com/video/BV1CGcPe5EY7)
+* [Listener内存马](https://www.bilibili.com/video/BV1N7chedEyX)
+* [Listener命令回显](https://www.bilibili.com/video/BV14Rw5eJEDx)
+* [Spring Controller内存马](https://www.bilibili.com/video/BV1dF9gYwE1y)
+* [Spring Interceptor内存马](https://www.bilibili.com/video/BV1W59BYxEfu)
+* [Agent内存马]()
+* [JNDI方式注入内存马]()
+* [Fastjson实战]()
+* [反序列化注入内存马]()
+* [Shiro注入内存马实战]()
+
+## 如何使用本项目
+```bash
+https://github.com/0ofo/java-memshell.git
+```
+或者直接在本页面下载zip，然后解压下载好的压缩包。
+随后用idea打开本项目目录。
