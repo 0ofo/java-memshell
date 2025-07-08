@@ -1,9 +1,7 @@
 # Filter内存马
 
 Filter，顾名思义，是过滤器，在请求到达Servlet前对请求进行过滤和处理。
-
-‍
-
+![img.png](assets/img.png)
 如图，请求会先到达Filter，最后再传递给Servlet。
 
 我们先定义一个Filter
@@ -48,7 +46,7 @@ public class MyFilter extends HttpFilter {
 
 那么我们要如何在运行时将Filter添加到tomcat中呢？如下即可
 
-```java
+```jsp
 <%@ page import="java.io.*" %>
 <%@ page import="java.lang.reflect.*" %>
 <%@ page import="org.apache.catalina.core.*" %>

