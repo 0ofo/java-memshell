@@ -219,3 +219,11 @@ ldap://192.168.100.1:1389/Inject
 报错了，但是不要慌，区区没有实现getObjectInstance方法罢了，但肯定构造方法中的注入逻辑肯定是触发了的。执行个命令看一下：
 
 ![image](assets/image-20250613020131-my9dx4t.png)
+
+# 参考链接
+
+[https://xz.aliyun.com/news/9369](https://xz.aliyun.com/news/9369)
+
+[https://github.com/Pikaqi/JNDIExploit-1.4](https://github.com/Pikaqi/JNDIExploit-1.4)
+
+[https://xz.aliyun.com/news/9915](https://xz.aliyun.com/news/9915)
