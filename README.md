@@ -48,19 +48,21 @@
 | [jndi-shell](jndi-shell/README.md)   | 使用无文件jndi方式注入内存马，含jndi-demo、jndi-inject和fastjson实战 |
 | [unser-shell](unser-shell/README.md) | 使用无文件反序列化方式注入内存马，含unser-demo和shiro实战 |
 
-### 源码级详细分析配套课程介绍
+### 源码级详细分析配套课程及文档
 
-* [Servlet内存马](https://www.bilibili.com/video/BV1FKUMYQE8D)
-* [Filter内存马](https://www.bilibili.com/video/BV1CGcPe5EY7)
-* [Listener内存马](https://www.bilibili.com/video/BV1N7chedEyX)
-* [Listener命令回显](https://www.bilibili.com/video/BV14Rw5eJEDx)
-* [Spring Controller内存马](https://www.bilibili.com/video/BV1dF9gYwE1y)
-* [Spring Interceptor内存马](https://www.bilibili.com/video/BV1W59BYxEfu)
-* [Agent内存马](https://www.bilibili.com/video/BV1E5ZsYXEgt)
-* [JNDI方式注入内存马](https://www.bilibili.com/video/BV1VTMpzxE4k)
-* [Fastjson实战](https://www.bilibili.com/video/BV18vMczoEgA)
-* [反序列化注入内存马](https://www.bilibili.com/video/BV1hKMuzUErz)
-* [Shiro注入内存马实战](https://www.bilibili.com/video/BV1UrNtzdEFM)
+| 视频                                                                 | 文档                                  |
+|----------------------------------------------------------------------|-------------------------------------|
+| [Servlet内存马](https://www.bilibili.com/video/BV1FKUMYQE8D)        | [相关文档](doc/Servlet内存马.md)           |
+| [Filter内存马](https://www.bilibili.com/video/BV1CGcPe5EY7)         | [相关文档](doc/Filter内存马.md)            |
+| [Listener内存马](https://www.bilibili.com/video/BV1N7chedEyX)       | [相关文档](doc/Listener内存马.md)          |
+| [Listener命令回显](https://www.bilibili.com/video/BV14Rw5eJEDx)     | [相关文档](doc/Listener内存马.md)          |
+| [Spring Controller内存马](https://www.bilibili.com/video/BV1dF9gYwE1y) | [相关文档](doc/Spring Controller内存马.md) |
+| [Spring Interceptor内存马](https://www.bilibili.com/video/BV1W59BYxEfu) | [相关文档](doc/Servlet内存马.md)           |
+| [Agent内存马](https://www.bilibili.com/video/BV1E5ZsYXEgt)           | [相关文档](doc/Servlet内存马.md)           |
+| [JNDI方式注入内存马](https://www.bilibili.com/video/BV1VTMpzxE4k)   | [相关文档](doc/Servlet内存马.md)           |
+| [Fastjson实战](https://www.bilibili.com/video/BV18vMczoEgA)         | [相关文档](doc/Servlet内存马.md)           |
+| [反序列化注入内存马](https://www.bilibili.com/video/BV1hKMuzUErz)   | [相关文档](doc/Servlet内存马.md)           |
+| [Shiro注入内存马实战](https://www.bilibili.com/video/BV1UrNtzdEFM)  | [相关文档](doc/Servlet内存马.md)           |
 
 ## 如何使用本项目
 ```bash
