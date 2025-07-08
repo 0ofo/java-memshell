@@ -62,8 +62,8 @@
 | [Agent内存马](https://www.bilibili.com/video/BV1E5ZsYXEgt)           | [相关文档](doc/Agent内存马.md)                |
 | [JNDI方式注入内存马](https://www.bilibili.com/video/BV1VTMpzxE4k)   | [相关文档](doc/JNDI注入内存马内存马.md)            |
 | [Fastjson实战](https://www.bilibili.com/video/BV18vMczoEgA)         | [相关文档](doc/Servlet内存马.md)              |
-| [反序列化注入内存马](https://www.bilibili.com/video/BV1hKMuzUErz)   | [相关文档](doc/Servlet内存马.md)              |
-| [Shiro注入内存马实战](https://www.bilibili.com/video/BV1UrNtzdEFM)  | [相关文档](doc/Servlet内存马.md)              |
+| [反序列化注入内存马](https://www.bilibili.com/video/BV1hKMuzUErz)   | [相关文档](doc/反序列化注入内存马.md)               |
+| [Shiro注入内存马实战](https://www.bilibili.com/video/BV1UrNtzdEFM)  | [相关文档](doc/Shiro内存马实战.md)              |
 
 ## 如何使用本项目
 ```bash
